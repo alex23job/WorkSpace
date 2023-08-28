@@ -93,6 +93,19 @@ fieldset {
     border-radius: 8px;
     background-color: #a6adff;
     font-size: 20px;
+    border: 2px solid transparent;
+    transition-property: color, background-color;
+    transition-duration: 0.2s;
+    transition-timing-function: ease-in-out;
+}
+
+.header__link:focus-visible {
+    border-color: #4f58be;
+}
+
+.header__link:hover {
+    color: #fff;
+    background-color: #2A18FF;
 }
 
 .hero {
@@ -249,7 +262,21 @@ fieldset {
     padding: 8px 24px;
     border-radius: 4px;
     background-color: #a6adff;
+    border: 2px solid transparent;
+    transition-property: color, background-color;
+    transition-duration: 0.2s;
+    transition-timing-function: ease-in-out;
 }
+
+.filter__button:focus-visible {
+    border-color: #4f58be;
+}
+
+.filter__button:hover {
+    color: #fff;
+    background-color: #2A18FF;
+}
+
 
 .filter__reset {
     position: absolute;
@@ -355,6 +382,17 @@ fieldset {
     cursor: pointer;
     justify-content: center;
     align-items: flex-start;
+    outline: none;
+    border: 2px solid transparent;
+    transition: background-color 0.1s ease-in-out;
+}
+
+.vacancy:hover {
+    background-color: #f9faff;
+}
+
+.vacancy:focus-visible {
+    border-color: #a6adff;
 }
 
 .vacancy__img {
@@ -532,7 +570,7 @@ fieldset {
     }
 
     .header__link {
-        padding: 10px 16px;
+        padding: 10px 24px;
         font-size: 14px;
     }
 
@@ -560,13 +598,27 @@ fieldset {
 
     .vacancies__container {
         flex-direction: column;
-        row-gap: 40px;
+        row-gap: 0;
     }
 
     .vacancies__filter-btn {
         display: flex;
         align-items: center;
         margin-bottom: 24px;
+        transition-property: margin-bottom, color;
+        transition-duration: 0.2s, 0.3s;
+        transition-timing-function: ease-in-out;
+        transition-delay: 0.2s, 0s;
+        color: #2A18FF;
+    }
+
+    .vacancies__filter-btn:hover:not(:focus) {
+        color: #a6adff;
+    }
+
+    .vacancies__filter-btn_active {
+        margin-bottom: 32px;
+        transition-delay: 0s, 0s;
     }
 
     .vacancies__filter-btn::after {
@@ -574,7 +626,7 @@ fieldset {
         display: block;
         width: 20px;
         height: 20px;
-        background: url('../img/arrow_blue.svg') no-repeat center;
+        background: url('../img/arrow_blue.svg') no-repeat center -2px;
     }
 
     .vacancies__filter-btn_active::after {
@@ -593,6 +645,7 @@ fieldset {
 
     .vacancies__filter_active {
         height: auto;
+        margin-bottom: 40px;
     }
 
     .filter__title {
@@ -607,8 +660,8 @@ fieldset {
     .filter__checkboxes {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-        gap: 24px;
-        justify-content: space-between;
+        gap: 24px 70px;
+        /*justify-content: space-between;*/
     }
 
     .filter__buttons {
@@ -663,12 +716,12 @@ fieldset {
 
     .hero {
         padding-top: 20px;
-        padding-bottom: 20px;
+        padding-bottom: 10px;
     }
 
     .hero__container {
         padding-top: 0;
-        padding-bottom: 262px;
+        padding-bottom: 234px;
     }
 
     .hero__container:after {
@@ -687,8 +740,8 @@ fieldset {
         font-size: 32px;
     }
 
-    .vacancies__container {
-        gap: 24px;
+    .vacancies__filter-btn_active {
+        margin-bottom: 24px;
     }
 
     .footer {
