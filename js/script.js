@@ -89,6 +89,12 @@ const renderModal = (data) => {
     modalMain.append(modalClose);
     modal.append(modalMain);
     document.body.append(modal);
+
+    modal.addEventListener('click', ({target}) => {
+        if (target === modal || target.closest('.modal__close')) {
+            modal.remove();
+        }
+    });
 };
 
 const openModal = (id) => {
@@ -96,6 +102,7 @@ const openModal = (id) => {
 };
 
 const init = () => {
+    const filterForm = document.querySelector('.filter__form');
     const cardsList = document.querySelector('.cards__list');
     
     // select city
@@ -130,6 +137,19 @@ const init = () => {
             //console.log("vacancyId : ", vacancyId);
             openModal(vacancyId);
         }
+    });
+
+    // filter
+    filterForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const formData = new FormData(filterForm);
+
+        const urlWithParam = new URL(`${API_URL}${VACANCY_URL}`);
+        formData.forEach((value, key) => {
+            urlWithParam.searchParams.append(key, value);
+        });
+
+        getData(urlWithParam, (data) => {renderVacancy(data, cardsList);}, renderError);
     });
 };
 
